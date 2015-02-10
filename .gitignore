@@ -1,0 +1,27 @@
+*.db
+*.pid
+*.pyc
+*.sqlite
+.idea
+.DS_Store
+.coverage
+.webassets-cache
+.project
+env
+target
+packed.*
+*.packed.*
+coverage.xml
+htmlcov
+*/static/gen/*
+
+# sublime text
+*.sublime-project
+*.sublime-workspace
+nohup-*
+.pydevproject
+.settings/*
+*.out
+**/gen/*
+
+dump.rdb
