@@ -13,9 +13,14 @@ import sqlalchemy
 from sqlalchemy import Table, Column, Integer, desc, ForeignKey, and_, \
                        ForeignKeyConstraint
 from sqlalchemy.orm import MapperExtension, mapper, object_session, \
-                           EXT_CONTINUE, polymorphic_union, ScopedSession, \
+                           EXT_CONTINUE, polymorphic_union, \
                            ColumnProperty
 from sqlalchemy.sql import ColumnCollection
+
+try:
+    from sqlalchemy.orm import ScopedSession
+except ImportError:
+    from sqlalchemy.orm import scoped_session as ScopedSession
 
 import elixir
 from elixir.statements import process_mutators, MUTATORS
@@ -95,6 +100,7 @@ class EntityDescriptor(object):
 
         # set default value for options
         self.table_args = []
+        self.table_options = {}
 
         # base class(es) options_defaults
         options_defaults = self.options_defaults()
